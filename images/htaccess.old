@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ../imageNotFound.php?&processLess2css=$1&orig=%{REQUEST_URI} [L,QSA]
+#RewriteRule ^(.*)$ ../kenny.jpg [L,QSA]
+
