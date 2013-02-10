@@ -1,41 +1,66 @@
 <?
 /*
-	Example:
-		A URL request for a resized image:
+The MIT License (MIT)
+Copyright (c) 2013 Kenrw, LLC
 
-		http://www.example.com/images/products/marmot/300x300/speedascent2.jpg
+Permission is hereby granted, free of charge, to any person 
+obtaining a copy of this software and associated documentation 
+files (the "Software"), to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, 
+publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, 
+subject to the following conditions:
 
-		A 404 error occurs because the resized image is not there :(
+The above copyright notice and this permission notice shall be included 
+in all copies or substantial portions of the Software.
 
-		Our class examines the path ( /images/products/marmot/300x300/speedascent2.jpg)
-		we break that down to 3 components:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+/*
 
-			/images/products/marmot
-			300x300
-			speedascent2.jpg
+Example:
 
-		Now, what does exist is the full-sized image.  And that image should be in this path:
+A URL request for a resized image:
 
-			/images/products/marmot/speedascent2.jpg
+http://www.example.com/images/products/marmot/300x300/speedascent2.jpg
 
-		So, all we do is create the folder
+A 404 error occurs because the resized image is not there :(
 
-			/images/products/marmot/300x300
+Our class examines the path ( /images/products/marmot/300x300/speedascent2.jpg)
+we break that down to 3 components:
 
-		Then we resize the image with our image resize libray (we don't care how it gets done -- using
-		GD, imageMagik, whatever).
+	/images/products/marmot
+	300x300
+	speedascent2.jpg
 
-		The the resized image is stored in the newly created folder with the same name.
+Now, what does exist is the full-sized image.  And that image should be in this path:
 
-		Now, subsequent Apache requests for 
+	/images/products/marmot/speedascent2.jpg
 
-			http://www.example.com/images/products/marmot/300x300/speedascent2.jpg
+So, all we do is create the folder
 
-		Will be satisfied normally with a nice Status 200 code.  
+	/images/products/marmot/300x300
 
-		Of course, any image resize (32x32, 20x16, ...) will be done the same way.  And,
-		there may be a bunch of other image names too.  Once the resized folder, say 300x300 is 
-		created, it will not need to be created again.
+Then we resize the image with our image resize libray (we don't care how it gets done -- using
+GD, imageMagik, whatever).
+
+The the resized image is stored in the newly created folder with the same name.
+
+Now, subsequent Apache requests for 
+
+	http://www.example.com/images/products/marmot/300x300/speedascent2.jpg
+
+Will be satisfied normally with a nice Status 200 code.  
+
+Of course, any image resize (32x32, 20x16, ...) will be done the same way.  And,
+there may be a bunch of other image names too.  Once the resized folder, say 300x300 is 
+created, it will not need to be created again.
 
 */
 include_once "./RelativePath.php";
