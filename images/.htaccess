@@ -1,1 +1,1 @@
-ErrorDocument 404 /webdev/apacheImageServer/resize_missing_image.php
+ErrorDocument 404 /webdev/apache_image_server/resize-missing-image/resize_missing_image.php

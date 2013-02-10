@@ -39,7 +39,8 @@
 
 */
 include_once "./RelativePath.php";
-define(IMAGE_DIR, dirname(__FILE__));
+define(IMAGE_DIR, $_SERVER['DOCUMENT_ROOT']);
+umask(2);
 
 class resize_missing_image {
 	function __construct($image_dir)
@@ -89,6 +90,7 @@ class resize_missing_image {
 		$width			+= 0;
 		$height			+= 0;
 if (0) {
+//phpinfo(); exit;
 echo "<PRE>";
 print_r(array($request_path,
 $this->base_image_dir,
