@@ -70,23 +70,34 @@ class resize_missing_image {
 	}
 	function main()
 	{
+		$request_rel_path_name  =
 		$request_path		= $this->clean_path(rawurldecode($_SERVER['REQUEST_URI']));
+/*
 		list(
 		  $_,
 		  $request_rel_path_name
 		)			= explode($this->base_image_dir, $request_path, 2);
-
+/**/
 		$request_base_name	= basename($request_rel_path_name);
 		$request_dir_name	= dirname($request_rel_path_name);
 		
-		$source_image_file	= $this->base_image_dir . "/" . dirname($request_dir_name) . "/$request_base_name";
-		$target_image_file	= $this->base_image_dir . "/$request_rel_path_name";
+		$source_image_file	= $this->clean_path($this->base_image_dir . "/" . dirname($request_dir_name) . "/$request_base_name");
+		$target_image_file	= $this->clean_path($this->base_image_dir . "/$request_rel_path_name");
 		
 		$width_by_height	= basename( $request_dir_name );
 		list($width, $height)	= explode('x', $width_by_height);
 		$width			+= 0;
 		$height			+= 0;
-	
+if (0) {
+echo "<PRE>";
+print_r(array($request_path,
+$this->base_image_dir,
+$request_rel_path_name,
+$source_image_file,
+$target_image_file,
+));
+exit;
+}
 		if ( file_exists( $source_image_file ) && $this->is_resize_reasonable($width, $height) ) {
 			$this->resize_and_save($source_image_file, $target_image_file, $width, $height );
 
